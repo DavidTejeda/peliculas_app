@@ -6,7 +6,22 @@ class DetailedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(),
+      body: CustomScrollView(
+        slivers: [
+          _CustomAppBar(),
+        ],
+      ),
+    );
+  }
+}
+
+class _CustomAppBar extends StatelessWidget {
+  //const _CustomAppBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      backgroundColor: Colors.indigo,
     );
   }
 }

@@ -16,8 +16,13 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [CardSwipper()],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CardSwipper(),
+            MovieSlider(),
+          ],
+        ),
       ),
     );
   }
