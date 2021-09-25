@@ -44,12 +44,12 @@ class _MoviePoster extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, 'detailed'),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image(
-                  image: NetworkImage(
-                      'https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-m.jpg'),
+              child: FadeInImage(
                   height: 120,
                   width: double.infinity,
-                  fit: BoxFit.cover),
+                  fit: BoxFit.cover,
+                  placeholder: AssetImage('assets/imagenes/no-image.jpg'),
+                  image: AssetImage('assets/imagenes/no-image.jpg')),
             ),
           ),
           SizedBox(height: 5.0),
