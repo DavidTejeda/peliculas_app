@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app/src/widgets/widgets.dart';
 
 class DetailedPage extends StatelessWidget {
   //const DetailedPage({Key? key}) : super(key: key);
@@ -16,7 +17,11 @@ class DetailedPage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            _OverView()
+            _OverView(),
+            _OverView(),
+            _OverView(),
+            SizedBox(height: 20),
+            CastingCard()
           ]))
         ],
       ),
@@ -79,9 +84,11 @@ class _OverView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       child: Text(
-          'Nostrud qui nostrud nisi enim excepteur excepteur amet irure anim. Deserunt duis esse dolor enim nostrud incididunt. Minim officia consequat aliquip Lorem aliqua nostrud excepteur veniam consequat culpa fugiat fugiat officia dolore. Incididunt consectetur consectetur nulla velit. Incididunt consequat dolore eiusmod aliquip commodo ex.'),
+        'Nostrud qui nostrud nisi enim excepteur excepteur amet irure anim. Deserunt duis esse dolor enim nostrud incididunt. Minim officia consequat aliquip Lorem aliqua nostrud excepteur veniam consequat culpa fugiat fugiat officia dolore. Incididunt consectetur consectetur nulla velit. Incididunt consequat dolore eiusmod aliquip commodo ex.',
+        textAlign: TextAlign.justify,
+      ),
     );
   }
 }
