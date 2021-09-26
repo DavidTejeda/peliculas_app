@@ -1,29 +1,39 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/pages/detailed_page.dart';
+import 'package:peliculas_app/models/movie.dart';
 
 class CardSwipper extends StatelessWidget {
-  //const CardSwipper({Key? key}) : super(key: key);
-
+  final List<Movie> movies;
+  const CardSwipper({Key? key, required this.movies}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    if (this.movies.length == 0) {
+      return Container(
+        width: double.infinity,
+        height: deviceSize.height * 0.5,
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
     return Container(
       padding: EdgeInsets.only(top: 40.0),
       child: Swiper(
-        itemCount: 10,
+        itemCount: movies.length,
         //layout: SwiperLayout.STACK,
         itemHeight: deviceSize.height * 0.1,
         itemWidth: deviceSize.width * 0.1,
         viewportFraction: 0.8,
         scale: 0.9,
         itemBuilder: (_, index) {
+          final movie = movies[index];
+          //print(movie.posterPath);
           return GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'detailed'),
+            onTap: () =>
+                Navigator.pushNamed(context, 'detailed', arguments: movie),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image.network(
-                "https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-m.jpg",
+                movie.fullImagePosterPath,
                 fit: BoxFit.cover,
               ),
             ),
