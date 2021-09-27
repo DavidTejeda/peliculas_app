@@ -27,7 +27,6 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<List<CastElement>> getMovieCast(int movieid) async {
-    print("di");
     var url = Uri.https(_baseUrl, '/3/movie/$movieid/credits', {
       'api_key': _apiKey,
       'language': _language,
@@ -52,4 +51,6 @@ class MoviesProvider extends ChangeNotifier {
     listOfPopularMovies = [...listOfPopularMovies, ...mapResponse.results];
     notifyListeners();
   }
+
+  void getSuggestionsByQuery(String query) {}
 }

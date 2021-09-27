@@ -15,7 +15,7 @@ class CastingCard extends StatelessWidget {
       future: moviesProvider.getMovieCast(movieid),
 //      initialData: [],
       builder: (_, AsyncSnapshot<List<CastElement>> snapshot) {
-        if (snapshot.hasData) {
+        if (!snapshot.hasData) {
           return Container(
             margin: EdgeInsets.only(bottom: 40),
             height: 190.0,
@@ -31,9 +31,9 @@ class CastingCard extends StatelessWidget {
           //color: Colors.red,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: cast.length,
             itemBuilder: (context, index) {
-              return _CastCard();
+              return _CastCard(actor: cast[index]);
             },
           ),
         );
@@ -43,7 +43,8 @@ class CastingCard extends StatelessWidget {
 }
 
 class _CastCard extends StatelessWidget {
-  //const _CastCard({Key? key}) : super(key: key);
+  final CastElement actor;
+  const _CastCard({Key? key, required this.actor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +62,10 @@ class _CastCard extends StatelessWidget {
               width: 100,
               fit: BoxFit.cover,
               placeholder: AssetImage('assets/imagenes/no-image.jpg'),
-              image: NetworkImage(
-                  'https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2021/06/09/2592367.jpg'),
+              image: NetworkImage(actor.fullImageProfilePath),
             ),
           ),
-          Text('Perritos siendo hermosos perritos de',
+          Text(actor.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(height: 1.2))
